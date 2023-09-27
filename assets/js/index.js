@@ -1,5 +1,21 @@
 const startGameBtn = document.getElementById("start-game-btn");
 
+const bunnyRow = 1;
+const bunnyCol = 1;
+
+const handleCellClick = (event) => {
+  const target = event.target;
+
+  const selectedRow = +target.getAttribute("data-row");
+  const selectedCol = +target.getAttribute("data-col");
+
+  if (selectedRow === bunnyRow && selectedCol === bunnyCol) {
+    console.log("HURRAY");
+  } else {
+    console.log("BOO");
+  }
+};
+
 const constructGame = (length) => {
   const gameDiv = document.createElement("div");
   gameDiv.setAttribute("class", "jumbotron m-1");
@@ -13,9 +29,13 @@ const constructGame = (length) => {
       // build col
       const colDiv = document.createElement("div");
       colDiv.setAttribute("class", "col border text-center p-4 fs-1");
+      colDiv.setAttribute("data-row", row);
+      colDiv.setAttribute("data-col", col);
 
       const icon = document.createElement("i");
       icon.setAttribute("class", "fa-solid fa-question");
+      icon.setAttribute("data-row", row);
+      icon.setAttribute("data-col", col);
 
       colDiv.append(icon);
 
@@ -24,6 +44,8 @@ const constructGame = (length) => {
 
     gameDiv.append(rowDiv);
   }
+
+  gameDiv.addEventListener("click", handleCellClick);
 
   return gameDiv;
 };
