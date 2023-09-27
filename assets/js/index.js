@@ -1,13 +1,6 @@
 const startGameBtn = document.getElementById("start-game-btn");
 
 const renderGameContainer = () => {
-  // <div>
-  //     <div>Game</div>
-  //     <div>Score</div>
-  //     <div class="jumbotron text-center border m-1">
-  //       <button class="btn btn-danger" id="restart-game-btn">Restart</button>
-  //     </div>
-  //   </div>
   const gameContainerDiv = document.createElement("div");
 
   const gameDiv = document.createElement("div");
@@ -32,7 +25,8 @@ const renderGameContainer = () => {
 };
 
 const handleRestartBtnClick = () => {
-  console.log("restart");
+  // refresh page
+  window.location.reload();
 };
 
 const handleStartBtnClick = () => {
